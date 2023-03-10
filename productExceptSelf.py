@@ -1,5 +1,18 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = [1]*len(nums)
+        prefix = 1
+        for i in range(len(nums)):
+            res[i] = prefix 
+            prefix *= nums[i]
+        postfix = 1
+        for i in range(len(nums)-1, -1, -1):
+            res[i] *= postfix
+            postfix *= nums[i]
+        return res
+        
+        """ 
+        DIVISION OPERATOR IS NOT TO BE USED
         zeroCount = 0
         for num in nums:
             if num == 0:
@@ -27,4 +40,4 @@ class Solution:
             for idx, num in enumerate(nums):
                 res[idx] = int(temp/num)
         
-        return res
+        return res """
